@@ -1,19 +1,30 @@
 <section class="clients">
   <div class="block-container">
-    <h2 class="clients__heading">OUR CLIENTS</h2>
+    <h2 class="clients__heading"><?php echo get_sub_field('heading'); ?></h2>
+<?php if (have_rows('clients_logos') ) { ?>
     <ul class="clients__list">
-      <li class="clients__item">
-        <img srcset="img/logos/logo-mightycoders-x1.png, img/logos/logo-mightycoders-x2.png 2x" src="img/logos/logo-mightycoders-x1.png" alt="Mightycoders logo." loading="lazy" width="197" height="108">
-      </li>
-      <li class="clients__item">
-        <img srcset="img/logos/logo-codakid-x1.png, img/logos/logo-codakid-x2.png 2x" src="img/logos/logo-codakid-x1.png" alt="Codakid logo." loading="lazy" width="238" height="65">
-      </li>
-      <li class="clients__item">
-        <img srcset="img/logos/logo-chess4life-x1.png, img/logos/logo-chess4life-x2.png 2x" src="img/logos/logo-chess4life-x1.png" alt="Chess4life logo." loading="lazy" width="261" height="53">
-      </li>
-      <li class="clients__item">
-        <img srcset="img/logos/logo-levelup-x1.png, img/logos/logo-levelup-x2.png 2x" src="img/logos/logo-levelup-x1.png" alt="Levelup logo." loading="lazy" width="244" height="54">
-      </li>
+<?php while (have_rows('clients_logos') ) { ?>
+<?php the_row();
+      $image1 = "";
+      $image2 = "";
+      $image1 = get_sub_field('image');
+      $image2 = get_sub_field('image_2x');
+?>
+    <li class="clients__item">
+      <?php 
+       if ($image1 && $image2) { 
+         echo img_srcset_2x($image1, $image2); 
+       }  
+       elseif ($image1 && !$image2) {
+         echo img_srcset($image1);
+       }
+       
+      ?>
+    </li>
+
+<?php } //endwhile ?>
+
+<?php } ?>
     </ul>
   </div>
 </section>

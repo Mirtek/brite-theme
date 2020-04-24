@@ -8,15 +8,15 @@
       <?php $image1 = get_sub_field('image');
             $image2 = get_sub_field('image_2x');
       ?>
-      <?php if ($image1 && $image2) { ?>
-
-      <img srcset="<?php echo $image1['url'] ?>, <?php echo $image2['url'] ?> 2x" src="<?php echo $image1['url']; ?>" alt="<?php echo $image1['alt'] ?>" loading="lazy" width="<?php echo $image1['width']; ?>" height="<?php echo $image1['height']; ?>">
-
-
-
-      <?php } elseif ($image1 && !$image2) { ?>
-      <img srcset="<?php echo $image1['url'] ?>" src="<?php echo $image1['url']; ?>" alt="<?php echo $image1['alt'] ?>" loading="lazy" width="<?php echo $image1['width']; ?>" height="<?php echo $image1['height']; ?>">
-      <?php } ?>
+      <?php 
+       if ($image1 && $image2) { 
+         echo img_srcset_2x($image1, $image2); 
+       }  
+       elseif ($image1 && !$image2) {
+         echo img_srcset($image1);
+       }
+       
+      ?>
     </div>
     <div class="home-hero__buttons">
       <a class="btn btn_primary" href="<?php echo get_sub_field('primary_button_url') ?>"><?php echo get_sub_field('primary_button_text') ?></a>

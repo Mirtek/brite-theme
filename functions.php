@@ -233,11 +233,18 @@ add_filter( 'nav_menu_link_attributes', 'add_specific_menu_location_atts3', 10, 
 function brite_sprite_mono($icon) {
     $name = explode('-', $icon)[1];
 
-    return '<svg class="icon-fill '.$icon.'" aria-label="'.$name.' icon">
+    return '<svg class="icon-fill '.$icon.'" aria-label="'.$name.' icon.">
         <use xlink:href="'.get_template_directory_uri().'/img/sprites/sprite-mono.svg#'.$icon.'"></use>
     </svg>';
 }
 
+function brite_sprite_multi($icon) {
+    $name = explode('-', $icon)[1];
+
+    return '<svg class="icon '.$icon.'" aria-label="'.$name.' logo.">
+        <use xlink:href="'.get_template_directory_uri().'/img/sprites/sprite-multi.svg#'.$icon.'"></use>
+    </svg>';
+}
 
 add_action('acf/init', 'my_acf_op_init');
 function my_acf_op_init() {
@@ -267,4 +274,14 @@ function hide_editor_home() {
     if($template_file == 'template-home-page.php'){ // edit the template name
         remove_post_type_support('page', 'editor');
     }
+}
+
+function img_srcset_2x($image1, $image2) {
+$out = '<img srcset="'.$image1['url'].', '.$image2['url'].' 2x" src="'.$image1['url'].'" alt="'.$image1['alt'].'" loading="lazy" width="'.$image1['width'].'" height="'.$image1['height'].'">';
+  return $out;
+}
+
+function img_srcset($image1) {
+$out = '<img srcset="'.$image1['url'].'" src="'.$image1['url'].'" alt="'.$image1['alt'].'" loading="lazy" width="'.$image1['width'].'" height="'.$image1['height'].'">';
+  return $out;
 }
