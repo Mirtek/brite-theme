@@ -41,7 +41,18 @@
 	<?php wp_head(); ?>
 </head>
 
-<body <?php body_class('header-on-white'); ?>>
+<?php $header_class_for_page=get_page_template_slug();
+
+if ($header_class_for_page == 'template-curriculum.php') {
+  $header_class_for_page='header-on-color';
+} else {
+  $header_class_for_page='header-on-white';
+}
+
+?>
+
+
+<body <?php body_class($header_class_for_page); ?>>
 <?php wp_body_open(); ?>
 	<header class="page-header">
       <div class="block-container">
