@@ -285,3 +285,9 @@ function img_srcset($image1) {
 $out = '<img srcset="'.$image1['url'].'" src="'.$image1['url'].'" alt="'.$image1['alt'].'" loading="lazy" width="'.$image1['width'].'" height="'.$image1['height'].'">';
   return $out;
 }
+
+  add_action('get_header', 'my_filter_head');
+
+  function my_filter_head() {
+    remove_action('wp_head', '_admin_bar_bump_cb');
+  }
