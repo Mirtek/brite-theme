@@ -44,7 +44,7 @@
         <div class="courses__item">
           <div class="course-card">
             <div class="course-card__image">
-            <?php $image1 = get_sub_field('image');
+            <?php $image1 = get_sub_field('image_1');
                   $image2 = get_sub_field('image_2x');
             ?>
             <?php 

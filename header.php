@@ -41,9 +41,10 @@
 	<?php wp_head(); ?>
 </head>
 
-<?php $header_class_for_page=get_page_template_slug();
-
-if ($header_class_for_page == 'template-curriculum.php') {
+<?php $page_template_slug=get_page_template_slug();
+      $header_class_for_page = '';
+if ($page_template_slug == 'template-curriculum.php' || 
+    $page_template_slug == 'template-product.php' ) {
   $header_class_for_page='header-on-color';
 } else {
   $header_class_for_page='header-on-white';

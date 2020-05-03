@@ -96,15 +96,16 @@
             </li>
           </ul>
         </div>
-        <!--Footer navigation end-->
-        <!--Footer copyright bgn-->
         <div class="page-footer__copy">
-          <p>Copyright © <?php echo date('Y'); ?> CodeNow. All rights reserved.</p>
+          <p>Copyright © <?php echo date('Y'); ?> Brite. All rights reserved.</p>
         </div>
-        <!--Footer copyright end-->
       </div>
     </footer>
-
+<button class="scrolltop-button reveal" type="button">
+  <svg class="icon-fill icon-arrow-up" aria-label="Arrow up icon.">
+    <use xlink:href="<?php echo get_template_directory_uri(); ?>/img/sprites/sprite-mono.svg#icon-arrow-up"></use>
+  </svg>
+</button>
 <?php wp_footer(); ?>
 
 </body>
