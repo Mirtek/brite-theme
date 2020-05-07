@@ -5,18 +5,12 @@
       <p><?php echo get_sub_field('subheading'); ?></p>
     </div>
     <div class="home-hero__image bg-figures-small">
-      <?php $image1 = get_sub_field('image');
-            $image2 = get_sub_field('image_2x');
-      ?>
-      <?php 
-       if ($image1 && $image2) { 
-         echo img_srcset_2x($image1, $image2); 
-       }  
-       elseif ($image1 && !$image2) {
-         echo img_srcset($image1);
-       }
-       
-      ?>
+    <div class="home-hero__video-container">
+      <video autoplay="" loop="" muted="" preload="" playsinline="" poster="<?php echo get_template_directory_uri(); ?>/img/home-hero-video.png">
+        <source src="<?php echo get_template_directory_uri(); ?>/img/home-hero-video.webm" type="video/webm">
+        <source src="<?php echo get_template_directory_uri(); ?>/img/home-hero-video.mp4" type="video/mp4">
+      </video>
+    </div>
     </div>
     <div class="home-hero__buttons">
       <a class="btn btn_primary" href="<?php echo get_sub_field('primary_button_url') ?>"><?php echo get_sub_field('primary_button_text') ?></a>
