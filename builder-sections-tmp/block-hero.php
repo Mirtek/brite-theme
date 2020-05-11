@@ -13,8 +13,6 @@
     </div>
     </div>
     <div class="home-hero__buttons">
-      <a class="btn btn_primary" href="<?php echo get_sub_field('primary_button_url') ?>"><?php echo get_sub_field('primary_button_text') ?></a>
-      <a class="btn btn_bordered" href="<?php echo get_sub_field('secondary_button_url') ?>"><?php echo get_sub_field('secondary_button_text') ?></a>
     </div>
   </div>
 </section>
