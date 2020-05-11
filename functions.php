@@ -385,6 +385,26 @@ function get_plans_btn_styling_classes($styling_data) {
     return $data;
 }
 
+function get_camps_feature_icon_proper_name($icon) {
+    switch ($styling_data) {
+      case 'content':
+        $data='icon-content';
+        break;
+      case 'plans':
+        $data='icon-plan';
+        break;
+      case 'material':
+        $data='icon-material';
+        break;
+      case 'support':
+        $data='icon-support';
+        break;
+      default:
+        $data='icon-content';
+    }
+    return $data;
+}
+
 add_filter('wpcf7_form_elements', function($content) {
     $content = preg_replace('/<(span).*?class="\s*(?:.*\s)?wpcf7-form-control-wrap(?:\s[^"]+)?\s*"[^\>]*>(.*)<\/\1>/i', '\2', $content);
 

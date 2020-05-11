@@ -45,8 +45,9 @@
       $header_class_for_page = '';
 if ($page_template_slug == 'template-curriculum.php' || 
     $page_template_slug == 'template-product.php' ||
-    $page_template_slug == 'template-plans.php' ) {
-  $header_class_for_page='header-on-color';
+    $page_template_slug == 'template-plans.php' ||
+    $page_template_slug == 'template-camps.php' ) {
+    $header_class_for_page='header-on-color';
 } else {
   $header_class_for_page='header-on-white';
 }
