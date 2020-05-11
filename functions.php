@@ -351,6 +351,40 @@ function get_dark_bg_secton_icon_n_classes($bg_type) {
     return $data;
 }
 
+function get_plans_styling_classes($styling_data) {
+    switch ($styling_data) {
+      case 'green':
+        $data='plan-card_silver';
+        break;
+      case 'yellow_and_big':
+        $data='plan-card_gold';
+        break;
+      case 'red':
+        $data='plan-card_platinum';
+        break;
+      default:
+        $data='plan-card_silver';
+    }
+    return $data;
+}
+
+function get_plans_btn_styling_classes($styling_data) {
+    switch ($styling_data) {
+      case 'green':
+        $data='btn_blue';
+        break;
+      case 'yellow_and_big':
+        $data='btn_gold';
+        break;
+      case 'red':
+        $data='btn_red';
+        break;
+      default:
+        $data='btn_blue';
+    }
+    return $data;
+}
+
 add_filter('wpcf7_form_elements', function($content) {
     $content = preg_replace('/<(span).*?class="\s*(?:.*\s)?wpcf7-form-control-wrap(?:\s[^"]+)?\s*"[^\>]*>(.*)<\/\1>/i', '\2', $content);
 
