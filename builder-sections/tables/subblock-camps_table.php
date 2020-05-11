@@ -1,6 +1,6 @@
   <section class="camps-pricing bg-circles">
     <div class="block-container">
-      <h2 class="block-container__heading">Camp Pricing</h2>
+      <h2 class="block-container__heading"><?php the_sub_field('heading'); ?></h2>
       <div class="camps-pricing__table">
         <?php $table = get_sub_field( 'camps_pricing_table_mobile' );
 
