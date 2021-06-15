@@ -6,6 +6,11 @@ $text = get_sub_field('button_text');
 <section class="camps-features">
   <div class="block-container">
     <h2 class="camps-features__heading"><?php the_sub_field('features_heading'); ?></h2>
+    <?php if ( get_sub_field('features_subheading') ) { ?>
+    <div class="camps-features__text">
+            <p><?php the_sub_field('features_subheading'); ?></p>
+    </div>
+    <?php } ?>
     <ul class="camps-features__list">
       <li class="camps-features__item">
         <div class="feature">

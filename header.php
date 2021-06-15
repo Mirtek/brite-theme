@@ -39,6 +39,15 @@
         }
     ?>
 	<?php wp_head(); ?>
+  <?php 
+  $cal_style = get_field('calendly_style');
+  $cal_script = get_field('calendly_script');
+
+  if ($cal_style && $cal_script) { ?>
+  <link href="<?php echo $cal_style; ?>" rel="stylesheet">
+  <script src="<?php echo $cal_script; ?>" async></script>
+
+  <?php } ?>
 </head>
 
 <?php $page_template_slug=get_page_template_slug();
@@ -46,6 +55,7 @@
 if ($page_template_slug == 'template-curriculum.php' || 
     $page_template_slug == 'template-product.php' ||
     $page_template_slug == 'template-plans.php' ||
+    $page_template_slug == 'template-plansv2.php' ||
     $page_template_slug == 'template-camps.php' ) {
     $header_class_for_page='header-on-color';
 } else {

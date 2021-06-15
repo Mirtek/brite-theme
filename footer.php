@@ -14,9 +14,16 @@
 <footer class="page-footer">
       <div class="block-container">
         <!--Footer logo bgn-->
-        <div class="page-footer__logo main-logo">
-          <a class="main-logo__link" href="<?php echo home_url(); ?>" aria-label="Go to Home page.">
-            <img class="main-logo__image" src="<?php echo get_stylesheet_directory_uri(); ?>/img/logos/logo-brite.svg" alt="Brite Logo."></a>
+        <div class="page-footer__logo">
+          <div class="main-logo">
+            <a class="main-logo__link" href="<?php echo home_url(); ?>" aria-label="Go to Home page.">
+              <img class="main-logo__image" src="<?php echo get_stylesheet_directory_uri(); ?>/img/logos/logo-brite.svg" alt="Brite Logo."></a>
+            </a>
+          </div>
+          <div class="partner-logo">
+            <div class="partner-logo__text"><span>accelerated by</span></div>
+            <div class="partner-logo__image"><img src="<?php echo get_stylesheet_directory_uri(); ?>/img/logos/logo-techstars_black.png" alt="Techstars Logo."></div>
+          </div>
         </div>
         <!--Footer logo end-->
         <!--Footer navigation bgn-->
@@ -90,6 +97,13 @@
                       </a>
                     </li>
                     <?php endif; ?>
+                    <?php if (get_field('link_to_linkedin', 'option')):  ?>
+                    <li class="social__item">
+                      <a class="social__link" href="<?php echo get_field('link_to_linkedin', 'option'); ?>" aria-label="Linkedin.">
+                        <?php echo brite_sprite_mono('icon-linkedin'); ?>
+                      </a>
+                    </li>
+                    <?php endif; ?>
                   </ul>
                 </li>
               </ul>
@@ -106,7 +120,16 @@
     <use xlink:href="<?php echo get_template_directory_uri(); ?>/img/sprites/sprite-mono.svg#icon-arrow-up"></use>
   </svg>
 </button>
-<?php wp_footer(); ?>
 
+<?php wp_footer(); ?>
+<script type="text/javascript" > (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)}; m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)}) (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym"); ym(80504548, "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true }); </script>
+<noscript><div><img src="https://mc.yandex.ru/watch/80504548" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+<script>
+document.addEventListener( 'wpcf7mailsent', function( event ) {
+  gtag('event', 'goal', {'event_category': 'form', 'event_action': 'submit'});
+  yaCounter80504548.reachGoal('zakaz');
+}, false );
+</script>
 </body>
 </html>

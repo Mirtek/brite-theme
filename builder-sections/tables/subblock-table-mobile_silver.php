@@ -13,16 +13,16 @@
 
                           foreach ( $table['header'] as $th ) {
                             if ($first_header_flag) {
-                              echo '<th colspan=3>';
+                              echo '<th colspan=2>';
                                   echo $th['c'];
                               echo '</th>';
                               $first_header_flag=false;
                             }
                             else {
                               if ($th['c']) {                              
-                                echo '<th>';
+                                echo '<td>';
                                     echo $th['c'];
-                                echo '</th>';
+                                echo '</td>';
                               }
                             }
 
@@ -45,25 +45,25 @@
                               if ($td['c']) {
                                 # code...
                                 if ($first_in_table) {
-                                  echo '<th colspan=3>';
+                                  echo '<th colspan=2>';
                                       echo $td['c'];
                                   echo '</th>';
                                   $first_in_table=false;
                                 } elseif ($first_in_row) {
-                                  echo '<th>';
+                                  echo '<td>';
                                       echo $td['c'];
-                                  echo '</th>';
+                                  echo '</td>';
                                   $first_in_row=false;
                                   # code...
                                 } elseif ($second_in_row) {
-                                  echo '<th>';
+                                  echo '<td>';
                                       echo $td['c'];
-                                  echo '</th>';
+                                  echo '</td>';
                                   $second_in_row = false;
                                 } elseif ($third_in_row) {
-                                  echo '<th>';
+                                  echo '<td>';
                                       echo $td['c'];
-                                  echo '</th>';
+                                  echo '</td>';
                                   $third_in_row = false;
                                 } else {
                                   echo '<td>';

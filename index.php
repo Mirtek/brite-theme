@@ -14,44 +14,65 @@
 
 get_header();
 ?>
-
-	<main id="primary" class="site-main">
-
-		<?php
-		if ( have_posts() ) :
-
-			if ( is_home() && ! is_front_page() ) :
-				?>
-				<header>
-					<h1 class="page-title screen-reader-text"><?php single_post_title(); ?></h1>
-				</header>
-				<?php
-			endif;
-
-			/* Start the Loop */
-			while ( have_posts() ) :
+<main class="page-main">
+      <section>
+        <div class="block-container">
+          <div class="blog-posts">
+            <h1><?php echo get_field('blog_heading', 'option'); ?></h1>
+            <p><?php echo get_field('blog_subheading', 'option'); ?></p>
+            <!--Blog-posts list bgn-->
+            <ul class="blog-posts__list">
+<?php			while ( have_posts() ) :
 				the_post();
-
-				/*
+?>
+              <li class="blog-posts__item">
+                <div class="post-card">
+                  <div class="post-card__publish-date">
+                    <span><?php echo get_the_date(); ?></span>
+                  </div>
+                  <div class="post-card__image"><a href="<?php the_permalink(); ?>" aria-label="Link to blog post.">
+                      <?php echo the_post_thumbnail( 'large', array( 'alt' => $alt ) ); ?></a></div>
+                  <div class="post-card__body">
+                    <div class="post-card__heading h4"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></div>
+                    <div class="post-card__text">
+                      <p><?php echo get_the_excerpt(); ?></p>
+                    </div>
+                    <div class="post-card__author">
+                      <div class="post-card__authors-avatar">
+                      	<?php echo get_avatar( get_the_author_meta( 'ID' ), 90); ?>
+                      </div>
+                      <div class="post-card__authors-name">
+                        <span>Asif Sultan</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>	
+<?php
+      			/*
 				 * Include the Post-Type-specific template for the content.
 				 * If you want to override this in a child theme, then include a file
 				 * called content-___.php (where ___ is the Post Type name) and that will be used instead.
 				 */
-				get_template_part( 'template-parts/content', get_post_type() );
+//				get_template_part( 'template-parts/content', get_post_type() ); 
+			endwhile; ?>
 
-			endwhile;
 
-			the_posts_navigation();
-
-		else :
-
-			get_template_part( 'template-parts/content', 'none' );
-
-		endif;
-		?>
-
-	</main><!-- #main -->
-
+            </ul>
+            <!--Blog-posts list end-->
+          </div>
+          <!--Pagination bgn-->
+          	<?php the_posts_pagination(array(
+          		'show_all' => true,
+          		'prev_next' => false,
+          		'type' => 'plain',
+          		'screen_reader_text' => ' ',
+          	)); 
+			?>
+          <!--Pagination end-->
+        </div>
+      </section>
+    </main>
 <?php
-get_sidebar();
+//get_sidebar();
 get_footer();

@@ -193,6 +193,10 @@ function additional_custom_styles() {
     wp_enqueue_script( 'main-js', get_template_directory_uri() . '/js/main.min.js', array('jquery'), filemtime(get_stylesheet_directory() .'/js/main.min.js'), 'all'  );
     wp_enqueue_script( 'bundle-js', get_template_directory_uri() . '/js/bundle.min.js', array('jquery'), filemtime(get_stylesheet_directory() .'/js/bundle.min.js'), 'all'  );
 
+    if (defined('BR_TEMPLATE') && BR_TEMPLATE === 'Plansv2' ) {
+      wp_enqueue_script( 'tooltip-js', get_template_directory_uri() . '/js/tooltips.min.js', array('jquery'), filemtime(get_stylesheet_directory() .'/js/tooltips.min.js'), 'all'  );
+    }
+
 }
 add_action( 'wp_enqueue_scripts', 'additional_custom_styles' );
 
@@ -405,6 +409,17 @@ function get_camps_feature_icon_proper_name($icon) {
     return $data;
 }
 
+add_filter( 'wpcf7_form_elements', 'dd_wpcf7_form_elements_replace' );
+function dd_wpcf7_form_elements_replace( $content ) {
+    // $name == Form Tag Name [textarea* your-message] 
+    $name = 'name="number-students"';
+    $str_pos = strpos( $content, $name );
+    if (false !== $str_pos) {
+        $content = substr_replace( $content, ' required="required" ', $str_pos, 0 );
+    }
+    return $content;
+}
+
 add_filter('wpcf7_form_elements', function($content) {
     $content = preg_replace('/<(span).*?class="\s*(?:.*\s)?wpcf7-form-control-wrap(?:\s[^"]+)?\s*"[^\>]*>(.*)<\/\1>/i', '\2', $content);
 
@@ -414,3 +429,5 @@ add_filter('wpcf7_form_elements', function($content) {
 add_filter('wpcf7_autop_or_not', '__return_false');
 
 define('WP_POST_REVISIONS', 3);
+
+
