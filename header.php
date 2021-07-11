@@ -130,7 +130,7 @@ function myRedirectFunction() {
 
   }
   </script>
-}
+
 
 
 <?php } ?>
