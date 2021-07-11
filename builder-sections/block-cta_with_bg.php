@@ -5,6 +5,6 @@
         $btn_url = get_sub_field('primary_button_url');
         $btn_text = get_sub_field('primary_button_text');
     ?>
-    <a class="btn btn_white" href="<?php echo $btn_url; ?>"><?php echo $btn_text ?></a>
+    <button class="btn btn_pink-gradient" <?php echo get_field('onclick_link', 'option'); ?>><?php echo $btn_text ?></button>
   </div>
 </section>

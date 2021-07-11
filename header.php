@@ -40,14 +40,100 @@
     ?>
 	<?php wp_head(); ?>
   <?php 
-  $cal_style = get_field('calendly_style');
-  $cal_script = get_field('calendly_script');
+  $cal_style = get_field('calendly_style', 'option');
+  $cal_script = get_field('calendly_script', 'option');
 
   if ($cal_style && $cal_script) { ?>
   <link href="<?php echo $cal_style; ?>" rel="stylesheet">
   <script src="<?php echo $cal_script; ?>" async></script>
 
   <?php } ?>
+  <?php if (is_page(926) ) { //courses page scripts
+?>
+  <script type="text/javascript">
+if( document.readyState !== 'loading' ) {
+    myRedirectFunction();
+} else {
+    document.addEventListener('DOMContentLoaded', function () {
+        myRedirectFunction();
+    });
+}
+
+function getQueryVariable(variable) {
+    var query = window.location.search.substring(1);
+    var vars = query.split('&');
+    for (var i = 0; i < vars.length; i++) {
+        var pair = vars[i].split('=');
+        if (decodeURIComponent(pair[0]) == variable) {
+            return decodeURIComponent(pair[1]);
+        }
+    }
+    console.log('Query variable %s not found', variable);
+}
+
+function myRedirectFunction() {
+        var tSelect = document.getElementById('coursesTechnology');
+        var pSelect = document.getElementById('coursesProvider');
+        var cSelect = document.getElementById('coursesSearch');
+
+        var courseValue = getQueryVariable('course_name') ? getQueryVariable('course_name') : null;
+
+        var provValue = getQueryVariable('provider') ? getQueryVariable('provider') : null;
+        var techValue = getQueryVariable('technology') ? getQueryVariable('technology') : null;
+
+        console.log(courseValue, provValue, techValue);
+
+        if (techValue) {
+          tSelect.value = techValue;
+        }
+        if (provValue) {
+          pSelect.value = provValue;
+        }
+        if (courseValue) {
+          cSelect.value = courseValue;
+        }
+
+//        pSelect.value=
+
+        tSelect.onchange = function() {
+            if(tSelect.value === 'technology_all') {
+                if(pSelect.value === 'provider_all' || !pSelect.value || pSelect.value === "Provider:") {
+                  window.location.href = "<?php echo get_home_url(); ?>/all-courses/";                  
+                } else {
+                  window.location.href = "<?php echo get_home_url(); ?>/all-courses/?provider="+encodeURIComponent(pSelect.value)+"#catalogheading";
+                }
+            } else {
+                if(pSelect.value === 'provider_all' || !pSelect.value || pSelect.value === "Provider:") {
+                  window.location.href = "<?php echo get_home_url(); ?>/all-courses/?technology="+tSelect.value+"#catalogheading";                  
+                } 
+                else {
+                  window.location.href = "<?php echo get_home_url(); ?>/all-courses/?provider="+encodeURIComponent(pSelect.value)+"&technology="+tSelect.value+"#catalogheading";
+                }
+            }
+        }
+        pSelect.onchange = function() {
+            if(pSelect.value === 'provider_all') {
+                if(tSelect.value === 'technology_all' || tSelect.value === "Technology:" || !tSelect.value) {
+                  window.location.href = "<?php echo get_home_url(); ?>/all-courses/";                  
+                } else {
+                  window.location.href = "<?php echo get_home_url(); ?>/all-courses/?technology="+tSelect.value+"#catalogheading";
+                }
+            } else {
+                if(tSelect.value === 'technology_all' || tSelect.value === "Technology:" || !tSelect.value) {
+                  window.location.href = "<?php echo get_home_url(); ?>/all-courses/?provider="+encodeURIComponent(pSelect.value)+"#catalogheading";                  
+                } 
+                else {
+                  window.location.href = "<?php echo get_home_url(); ?>/all-courses/?provider="+encodeURIComponent(pSelect.value)+"&technology="+tSelect.value+"#catalogheading";
+                }
+            }
+        }
+
+  }
+  </script>
+}
+
+
+<?php } ?>
 </head>
 
 <?php $page_template_slug=get_page_template_slug();

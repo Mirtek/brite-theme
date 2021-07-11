@@ -12,12 +12,13 @@
     the_row(); 
 
     if ( get_row_layout() == 'hero_section' ){
-
-      get_template_part( 'builder-sections/block', 'hero_dark_bg' );
+        get_template_part( 'builder-sections/block', 'hero_dark_bg' );
     }
-    elseif ( get_row_layout() == 'top_courses_big_section' ){
-
-      get_template_part( 'builder-sections/block', 'top_courses_big' );
+    elseif ( get_row_layout() == 'courses_catalog' ){
+    	get_template_part('builder-sections/block', 'courses_catalog_v2');
+    }
+    elseif ( get_row_layout() == 'all_courses' ){
+    	get_template_part('builder-sections/block', 'all_courses');
     }
     elseif ( get_row_layout() == 'image_dark_bg_cta_section' ){
 

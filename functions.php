@@ -431,3 +431,206 @@ add_filter('wpcf7_autop_or_not', '__return_false');
 define('WP_POST_REVISIONS', 3);
 
 
+add_action( 'init', 'register_course' );
+function register_course(){
+    register_post_type('course', array(
+        'label'  => null,
+        'labels' => array(
+            'name'               => 'Courses',
+            'singular_name'      => 'Course',
+            'add_new'            => 'Add Course',
+            'add_new_item'       => 'Add New Course',
+            'edit_item'          => 'Edit Course',
+            'new_item'           => 'New Course',
+            'view_item'          => 'View Course',
+            'search_items'       => 'Search Courses',
+            'not_found'          => 'Not Found Courses',
+            'not_found_in_trash' => 'Not Found Courses in Trash',
+            'menu_name'          => 'Courses',
+        ),
+        'description'         => 'Courses',
+        'public'              => true,
+        'publicly_queryable'  => false,
+        'show_in_nav_menus'   => true,
+        'publicly_queryable'  => false,
+        'show_in_menu'          => true,
+        'menu_position'       => 10,
+        'menu_icon'           => 'dashicons-screenoptions',
+        //'capability_type'   => 'post',
+        //'capabilities'      => 'post',
+        //'map_meta_cap'      => null,
+        'hierarchical'        => false,
+        'supports'            => array('title','editor', 'custom-fields', 'author', 'thumbnail'), // 'title','editor','author','thumbnail','excerpt','trackbacks','custom-fields','comments','revisions','page-attributes','post-formats'
+        'taxonomies'          => array(),
+        'has_archive'         => false,
+        'rewrite'             => true,
+        'query_var'           => false,
+    ) );
+}
+
+
+if( function_exists('acf_add_options_page') ) {
+  acf_add_options_page();
+  
+}
+
+function acf_load_technology_field_choices( $field ) {
+    
+    // reset choices
+    $field['choices'] = array();
+    
+    // get the textarea value from options page without any formatting
+    $choices = get_field('technology', 'option', false);
+
+    
+    // explode the value so that each line is a new array piece
+    $choices = explode("\n", $choices);
+
+    
+    // remove any unwanted white space
+    $choices = array_map('trim', $choices);
+
+    
+    // loop through array and add to field 'choices'
+    if( is_array($choices) ) {
+        
+        foreach( $choices as $choice ) {
+            
+            $field['choices'][ $choice ] = $choice;
+            
+        }
+        
+    }
+    // return the field
+    return $field;
+    
+}
+
+add_filter('acf/load_field/name=technology_select', 'acf_load_technology_field_choices');
+
+function acf_load_provider_field_choices( $field ) {
+    
+    // reset choices
+    $field['choices'] = array();
+    
+    // get the textarea value from options page without any formatting
+    $choices = get_field('provider', 'option', false);
+
+    
+    // explode the value so that each line is a new array piece
+    $choices = explode("\n", $choices);
+
+    
+    // remove any unwanted white space
+    $choices = array_map('trim', $choices);
+
+    // loop through array and add to field 'choices'
+    if( is_array($choices) ) {
+        
+        foreach( $choices as $choice ) {
+            
+            $field['choices'][ $choice ] = $choice;
+            
+        }
+        
+    }
+    // return the field
+    return $field;
+    
+}
+
+add_filter('acf/load_field/name=provider_select', 'acf_load_provider_field_choices');
+
+function acf_load_level_field_choices( $field ) {
+    
+    // reset choices
+    $field['choices'] = array();
+    
+    // get the textarea value from options page without any formatting
+    $choices = get_field('level', 'option', false);
+
+    
+    // explode the value so that each line is a new array piece
+    $choices = explode("\n", $choices);
+
+    
+    // remove any unwanted white space
+    $choices = array_map('trim', $choices);
+
+    // loop through array and add to field 'choices'
+    if( is_array($choices) ) {
+        
+        foreach( $choices as $choice ) {
+            
+            $field['choices'][ $choice ] = $choice;
+            
+        }
+        
+    }
+    // return the field
+    return $field;
+    
+}
+
+add_filter('acf/load_field/name=level_select', 'acf_load_level_field_choices');
+
+
+function brite_normalize_tech_image($technology) {
+
+$array = array('logo_java'=> 'Java',
+               'logo_minecraft'=> 'Minecraft',
+               'logo_python' => 'Python',
+               'logo_roblox' => 'Roblox',
+               'logo_scratch'=>'Scratch',
+               'logo_unity+c-sharp'=>'Unity',
+               'logo_html+css'=>'Web-dev',
+               'logo_arduino'=>'Arduino',
+               'logo_javascript'=>'Javascript',
+               'logo_lua' => 'Lua',
+          );
+  
+  $file_name = array_search($technology, $array);
+
+  return $file_name ? $file_name : $technology;
+}
+
+function brite_normalize_provider_image($provider) {
+
+$array = array('logo_codakid'=> 'Codakid',
+               'logo_codekingdoms'=> 'Code Kingdoms',
+               'logo_codecombat' => 'Code Combat',
+          );
+  
+  $file_name = array_search($provider, $array);
+
+  return $file_name ? $file_name : $provider;
+}
+
+
+function generate_tech_img($technology) {
+
+$image_name = brite_normalize_tech_image($technology);
+?>
+
+<img srcset="<?php echo get_stylesheet_directory_uri(); ?>/img/card-images/card-tech-<?php echo $image_name; ?>.png, <?php echo get_stylesheet_directory_uri(); ?>/img/card-images/card-tech-<?php echo $image_name; ?>@2x.png 2x" src="<?php echo get_stylesheet_directory_uri(); ?>/img/card-images/card-tech-<?php echo $image_name; ?>.png" alt="<?php echo $technology; ?> logo." loading="lazy">
+<?php
+}
+
+function generate_provider_img($provider) {
+
+$image_name = brite_normalize_provider_image($provider);
+?>
+
+<img srcset="<?php echo get_stylesheet_directory_uri(); ?>/img/card-images/card-provider-<?php echo $image_name; ?>.png, <?php echo get_stylesheet_directory_uri(); ?>/img/card-images/card-provider-<?php echo $image_name; ?>@2x.png 2x" src="<?php echo get_stylesheet_directory_uri(); ?>/img/card-images/card-provider-<?php echo $image_name; ?>.png" alt="<?php echo $provider; ?> logo." loading="lazy">
+
+<?php
+}
+
+
+function brite_register_query_vars( $vars ) {
+    $vars[] = 'course_name';
+    $vars[] = 'technology';
+    $vars[] = 'provider';
+    return $vars;
+}
+add_filter( 'query_vars', 'brite_register_query_vars' );

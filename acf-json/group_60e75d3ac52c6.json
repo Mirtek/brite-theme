@@ -1,0 +1,144 @@
+{
+    "key": "group_60e75d3ac52c6",
+    "title": "Courses fields",
+    "fields": [
+        {
+            "key": "field_60e75d41e16f8",
+            "label": "Technology",
+            "name": "technology_select",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "Java": "Java",
+                "Minecraft": "Minecraft",
+                "Python": "Python",
+                "Roblox": "Roblox",
+                "Scratch": "Scratch",
+                "Unity": "Unity",
+                "Web-dev": "Web-dev"
+            },
+            "default_value": [],
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 0,
+            "return_format": "value",
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
+            "key": "field_60e75d76e16f9",
+            "label": "Provider",
+            "name": "provider_select",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "Codakid": "Codakid",
+                "Code Kingdoms": "Code Kingdoms",
+                "Code Combat": "Code Combat"
+            },
+            "default_value": [],
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 0,
+            "return_format": "value",
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
+            "key": "field_60e75d8ce16fa",
+            "label": "Level",
+            "name": "level_select",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "Beg": "Beg",
+                "Int": "Int",
+                "Adv": "Adv"
+            },
+            "default_value": [],
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 0,
+            "return_format": "value",
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
+            "key": "field_60e75d97e16fb",
+            "label": "Duration",
+            "name": "duration",
+            "type": "text",
+            "instructions": "in hours, just number",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_60e75db6e16fc",
+            "label": "Age recommended",
+            "name": "age_recommended",
+            "type": "text",
+            "instructions": "just number, plus sign autoadded",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "course"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1625778263
+}

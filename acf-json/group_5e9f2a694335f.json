@@ -112,25 +112,6 @@
             "maxlength": ""
         },
         {
-            "key": "field_6044ca479e44d",
-            "label": "Link to Linkedin",
-            "name": "link_to_linkedin",
-            "type": "text",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": ""
-        },
-        {
             "key": "field_5e9f2b452a909",
             "label": "Phone Number",
             "name": "",
@@ -218,6 +199,79 @@
             "prepend": "",
             "append": "",
             "maxlength": ""
+        },
+        {
+            "key": "field_60eac34c7ea4b",
+            "label": "Book a demo link",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_60eac35a7ea4c",
+            "label": "Onclick link",
+            "name": "onclick_link",
+            "type": "text",
+            "instructions": "onclick=\"Calendly.initPopupWidget({url: 'https:\/\/calendly.com\/gobrite\/demo'});return false;\"\r\nshould look sort of like this, provided by calendly",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_60eac49302a0a",
+            "label": "Calendly style",
+            "name": "calendly_style",
+            "type": "text",
+            "instructions": "link to css style",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_60eac49102a09",
+            "label": "Calendly script",
+            "name": "calendly_script",
+            "type": "text",
+            "instructions": "link to css script",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
         }
     ],
     "location": [
@@ -237,5 +291,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1615121157
+    "modified": 1625998521
 }
