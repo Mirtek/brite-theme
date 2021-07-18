@@ -32,6 +32,7 @@
                 <option value="Java">Java</option>
                 <option value="Javascript">Javascript</option>
                 <option value="Lua">Lua</option>
+                <option value="Specialty Courses">Specialty Courses</option>
               </select>
             </div>
             <div class="search-filters-form__filter-wrapper">
@@ -167,7 +168,7 @@
               </div>
               <div class="course-single-card__body">
                 <div class="course-single-card__labels">
-                  <div class="course-single-card__label course-single-card__label_beginner">
+                  <div class="course-single-card__label <?php echo brite_normalize_level_class($data['level']); ?>">
                     <span><?php echo $data['level']; ?></span>
                   </div>
                   <div class="course-single-card__label course-single-card__label_age">

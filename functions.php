@@ -575,6 +575,17 @@ function acf_load_level_field_choices( $field ) {
 add_filter('acf/load_field/name=level_select', 'acf_load_level_field_choices');
 
 
+function brite_normalize_level_class($level) {
+
+$array = array('course-single-card__label_beginner'=> 'Beg',
+               'course-single-card__label_intermediate'=> 'Int',
+               'course-single-card__label_advanced' => 'Adv',
+          );
+  $file_name = array_search($level, $array);
+
+  return $file_name ? $file_name : $level;
+}
+
 function brite_normalize_tech_image($technology) {
 
 $array = array('logo_java'=> 'Java',
@@ -585,8 +596,10 @@ $array = array('logo_java'=> 'Java',
                'logo_unity+c-sharp'=>'Unity',
                'logo_html+css'=>'Web-dev',
                'logo_arduino'=>'Arduino',
+               'logo_unreal' => 'Unreal Engine',
                'logo_javascript'=>'Javascript',
                'logo_lua' => 'Lua',
+               'logo_none' => 'Specialty Courses',
           );
   
   $file_name = array_search($technology, $array);
@@ -610,9 +623,11 @@ $array = array('logo_codakid'=> 'Codakid',
 function generate_tech_img($technology) {
 
 $image_name = brite_normalize_tech_image($technology);
-?>
-
+if ( $image_name == 'logo_none') {} else { ?>
 <img srcset="<?php echo get_stylesheet_directory_uri(); ?>/img/card-images/card-tech-<?php echo $image_name; ?>.png, <?php echo get_stylesheet_directory_uri(); ?>/img/card-images/card-tech-<?php echo $image_name; ?>@2x.png 2x" src="<?php echo get_stylesheet_directory_uri(); ?>/img/card-images/card-tech-<?php echo $image_name; ?>.png" alt="<?php echo $technology; ?> logo." loading="lazy">
+
+<?php } ?>
+
 <?php
 }
 

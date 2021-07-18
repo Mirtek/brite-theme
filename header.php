@@ -98,7 +98,7 @@ function myRedirectFunction() {
         tSelect.onchange = function() {
             if(tSelect.value === 'technology_all') {
                 if(pSelect.value === 'provider_all' || !pSelect.value || pSelect.value === "Provider:") {
-                  window.location.href = "<?php echo get_home_url(); ?>/all-courses/";                  
+                  window.location.href = "<?php echo get_home_url(); ?>/all-courses/#catalogheading";                  
                 } else {
                   window.location.href = "<?php echo get_home_url(); ?>/all-courses/?provider="+encodeURIComponent(pSelect.value)+"#catalogheading";
                 }
@@ -114,7 +114,7 @@ function myRedirectFunction() {
         pSelect.onchange = function() {
             if(pSelect.value === 'provider_all') {
                 if(tSelect.value === 'technology_all' || tSelect.value === "Technology:" || !tSelect.value) {
-                  window.location.href = "<?php echo get_home_url(); ?>/all-courses/";                  
+                  window.location.href = "<?php echo get_home_url(); ?>/all-courses/#catalogheading";                  
                 } else {
                   window.location.href = "<?php echo get_home_url(); ?>/all-courses/?technology="+tSelect.value+"#catalogheading";
                 }
