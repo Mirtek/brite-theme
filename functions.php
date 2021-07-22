@@ -587,44 +587,44 @@ $array = array('course-single-card__label_beginner'=> 'Beg',
 }
 
 function brite_normalize_tech_image($technology) {
+  $rep = get_field('technology_image', 'option');
+  $arr = array();
+  foreach ($rep as $row => $value) {
+    $name = $value['technology'];
+    $arr[$name] = $value;
+  }
 
-$array = array('logo_java'=> 'Java',
-               'logo_minecraft'=> 'Minecraft',
-               'logo_python' => 'Python',
-               'logo_roblox' => 'Roblox',
-               'logo_scratch'=>'Scratch',
-               'logo_unity+c-sharp'=>'Unity',
-               'logo_html+css'=>'Web-dev',
-               'logo_arduino'=>'Arduino',
-               'logo_unreal' => 'Unreal Engine',
-               'logo_javascript'=>'Javascript',
-               'logo_lua' => 'Lua',
-               'logo_none' => 'Specialty Courses',
-          );
+  $img_urls = array();
+
+  $img_urls['img']   = $arr[$technology]['image']['url'] ? $arr[$technology]['image']['url'] : "";
+  $img_urls['img2x'] = $arr[$technology]['image2x']['url'] ? $arr[$technology]['image2x']['url'] : "";
   
-  $file_name = array_search($technology, $array);
-
-  return $file_name ? $file_name : $technology;
+  return $img_urls ? $img_urls : $technology;
 }
 
 function brite_normalize_provider_image($provider) {
+  $rep = get_field('provider_image', 'option');
+  $arr = array();
+  foreach ($rep as $row => $value) {
+    $name = $value['provider'];
+    $arr[$name] = $value;
+  }
+  $img_urls = array();
 
-$array = array('logo_codakid'=> 'Codakid',
-               'logo_codekingdoms'=> 'Code Kingdoms',
-               'logo_codecombat' => 'Code Combat',
-          );
+  $img_urls['img']   = $arr[$provider]['image']['url'] ? $arr[$provider]['image']['url'] : "";
+  $img_urls['img2x'] = $arr[$provider]['image2x']['url'] ? $arr[$provider]['image2x']['url'] : "";
   
-  $file_name = array_search($provider, $array);
-
-  return $file_name ? $file_name : $provider;
+  return $img_urls ? $img_urls : $provider;
 }
 
 
 function generate_tech_img($technology) {
 
-$image_name = brite_normalize_tech_image($technology);
-if ( $image_name == 'logo_none') {} else { ?>
-<img srcset="<?php echo get_stylesheet_directory_uri(); ?>/img/card-images/card-tech-<?php echo $image_name; ?>.png, <?php echo get_stylesheet_directory_uri(); ?>/img/card-images/card-tech-<?php echo $image_name; ?>@2x.png 2x" src="<?php echo get_stylesheet_directory_uri(); ?>/img/card-images/card-tech-<?php echo $image_name; ?>.png" alt="<?php echo $technology; ?> logo." loading="lazy">
+$image_urls = brite_normalize_tech_image($technology);
+
+
+if ( $image_urls['img'] == "" && $image_urls['img2x'] == "" ) {} else { ?>
+<img srcset="<?php echo $image_urls['img']; ?>, <?php echo $image_urls['img2x']; ?> 2x" src="<?php echo $image_urls['img']; ?>" alt="<?php echo $technology; ?> logo." loading="lazy">
 
 <?php } ?>
 
@@ -633,12 +633,13 @@ if ( $image_name == 'logo_none') {} else { ?>
 
 function generate_provider_img($provider) {
 
-$image_name = brite_normalize_provider_image($provider);
-?>
+$image_urls = brite_normalize_provider_image($provider);
 
-<img srcset="<?php echo get_stylesheet_directory_uri(); ?>/img/card-images/card-provider-<?php echo $image_name; ?>.png, <?php echo get_stylesheet_directory_uri(); ?>/img/card-images/card-provider-<?php echo $image_name; ?>@2x.png 2x" src="<?php echo get_stylesheet_directory_uri(); ?>/img/card-images/card-provider-<?php echo $image_name; ?>.png" alt="<?php echo $provider; ?> logo." loading="lazy">
+if ( $image_urls['img'] == "" && $image_urls['img2x'] == "" ) {} else { ?>
+<img srcset="<?php echo $image_urls['img']; ?>, <?php echo $image_urls['img2x']; ?> 2x" src="<?php echo $image_urls['img']; ?>" alt="<?php echo $provider; ?> logo." loading="lazy">
 
 <?php
+}
 }
 
 

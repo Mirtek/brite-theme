@@ -25,7 +25,7 @@ $unity_results = $wpdb->get_results( "SELECT COUNT(*) as count FROM `wp_posts` i
             <div class="courses-catalog-card">
               <a class="courses-catalog-card__link" href="<?php echo get_home_url(); ?>/all-courses/?technology=Scratch" tabindex="-1">
                 <div class="courses-catalog-card__image">
-                  <img srcset="<?php echo get_stylesheet_directory_uri(); ?>/img/icon-technologies-png/icon-scratch.png, <?php echo get_stylesheet_directory_uri(); ?>/img/icon-technologies-png/icon-scratch@2x.png 2x" src="<?php echo get_stylesheet_directory_uri(); ?>/img/icon-technologies-png/icon-scratch.png" alt="Scratch logo." loading="lazy" width="56" height="77">
+                  <img srcset="<?php echo get_stylesheet_directory_uri(); ?>/img/icon-technologies-png/icon-scratch.png, <?php echo get_stylesheet_directory_uri(); ?>/img/icon-technologies-png/icon-scratch@2x.png 2x" src="<?php echo get_stylesheet_directory_uri(); ?>/img/icon-technologies-png/icon-scratch.png" alt="Scratch logo." loading="lazy" width="77" height="77">
                 </div>
                 <h5 class="courses-catalog-card__heading">Scratch</h5>
                 <span class="courses-catalog-card__info"><?php echo $scratch_results[0]->count; ?> Courses</span>

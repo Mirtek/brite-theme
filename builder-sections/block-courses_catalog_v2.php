@@ -1,3 +1,11 @@
+<?php $tech = get_field('technology','option');
+$tech_arr = explode("\n", $tech);
+$tech_arr = array_map('trim', $tech_arr);
+
+$prov = get_field('provider','option');
+$prov_arr = explode("\n", $prov);
+$prov_arr = array_map('trim', $prov_arr);
+?>
 <section class="courses-catalog">
   <div class="block-container">
     <div class="courses-catalog__block">
@@ -21,18 +29,9 @@
               <select name="technology" id="coursesTechnology">
                 <option disabled="" selected="">Technology:</option>
                 <option value="technology_all">All</option>
-                <option value="Scratch">Scratch</option>
-                <option value="Roblox">Roblox</option>
-                <option value="Minecraft">Minecraft</option>
-                <option value="Python">Python</option>
-                <option value="Web-dev">HTML/CSS</option>
-                <option value="Arduino">Arduino</option>
-                <option value="Unreal Engine">Unreal Engine</option>
-                <option value="Unity">Unity</option>
-                <option value="Java">Java</option>
-                <option value="Javascript">Javascript</option>
-                <option value="Lua">Lua</option>
-                <option value="Specialty Courses">Specialty Courses</option>
+                <?php foreach ($tech_arr as $key => $value) { ?>
+                  <option value="<?php echo $value; ?>"><?php echo $value; ?></option>
+                <?php } ?>
               </select>
             </div>
             <div class="search-filters-form__filter-wrapper">
@@ -40,9 +39,9 @@
               <select name="provider" id="coursesProvider">
                 <option disabled="" selected="">Provider:</option>
                 <option value="provider_all">All</option>
-                <option value="Codakid">CodaKid</option>
-                <option value="Code Kingdoms">CodeKingdoms</option>
-                <option value="Code Combat">CodeCombat</option>
+                <?php foreach ($prov_arr as $key => $value) { ?>
+                  <option value="<?php echo $value; ?>"><?php echo $value; ?></option>
+                <?php } ?>
               </select>
             </div>
             <div class="search-filters-form__filter-wrapper">
@@ -209,6 +208,10 @@
     echo "</div></nav>"; ?>
       </div>
     <?php wp_reset_postdata();  ?>
+    <?php else :  ?>
+    <div class="courses-catalog__empty">
+      <p>Courses not found</p>
+    </div>
   <?php endif; ?>
 
     </div>
