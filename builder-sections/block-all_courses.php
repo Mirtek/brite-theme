@@ -3,12 +3,12 @@
 global $wpdb;
 
 $scratch_results = $wpdb->get_results( "SELECT COUNT(*) as count FROM `wp_posts` inner join wp_postmeta on id=post_id where meta_key=\"technology_select\" and meta_value = \"Scratch\" and post_type = 'course' and post_status = 'publish'" );
-$minecraft_results = $wpdb->get_results( "SELECT COUNT(*) as count FROM `wp_posts` inner join wp_postmeta on id=post_id where meta_key=\"technology_select\" and meta_value = \"Minecraft\" and post_type = 'course' and post_status = 'publish'" );
+$minecraft_results = $wpdb->get_results( "SELECT COUNT(*) as count FROM `wp_posts` inner join wp_postmeta on id=post_id where meta_key=\"technology_select\" and meta_value = \"Minecraft Java\" and post_type = 'course' and post_status = 'publish'" );
 $roblox_results = $wpdb->get_results( "SELECT COUNT(*) as count FROM `wp_posts` inner join wp_postmeta on id=post_id where meta_key=\"technology_select\" and meta_value = \"Roblox\" and post_type = 'course' and post_status = 'publish'" );
 
 $python_results = $wpdb->get_results( "SELECT COUNT(*) as count FROM `wp_posts` inner join wp_postmeta on id=post_id where meta_key=\"technology_select\" and meta_value = \"Python\" and post_type = 'course' and post_status = 'publish'" );
 $java_results = $wpdb->get_results( "SELECT COUNT(*) as count FROM `wp_posts` inner join wp_postmeta on id=post_id where meta_key=\"technology_select\" and meta_value = \"Javascript\" and post_type = 'course' and post_status = 'publish'" );
-$webdev_results = $wpdb->get_results( "SELECT COUNT(*) as count FROM `wp_posts` inner join wp_postmeta on id=post_id where meta_key=\"technology_select\" and meta_value = \"Web-dev\" and post_type = 'course' and post_status = 'publish'" );
+$webdev_results = $wpdb->get_results( "SELECT COUNT(*) as count FROM `wp_posts` inner join wp_postmeta on id=post_id where meta_key=\"technology_select\" and meta_value = \"Web Dev\" and post_type = 'course' and post_status = 'publish'" );
 $unity_results = $wpdb->get_results( "SELECT COUNT(*) as count FROM `wp_posts` inner join wp_postmeta on id=post_id where meta_key=\"technology_select\" and meta_value = \"Unity\" and post_type = 'course' and post_status = 'publish'" );
 
 ?>
@@ -33,11 +33,11 @@ $unity_results = $wpdb->get_results( "SELECT COUNT(*) as count FROM `wp_posts` i
             </div>
           </div><div class="courses__item">
             <div class="courses-catalog-card">
-              <a class="courses-catalog-card__link" href="<?php echo get_home_url(); ?>/all-courses/?technology=Minecraft" tabindex="-1">
+              <a class="courses-catalog-card__link" href="<?php echo get_home_url(); ?>/all-courses/?technology=Minecraft%20Java" tabindex="-1">
                 <div class="courses-catalog-card__image">
                   <img srcset="<?php echo get_stylesheet_directory_uri(); ?>/img/icon-technologies-png/icon-minecraft.png, <?php echo get_stylesheet_directory_uri(); ?>/img/icon-technologies-png/icon-minecraft@2x.png 2x" src="<?php echo get_stylesheet_directory_uri(); ?>/img/icon-technologies-png/icon-minecraft.png" alt="Minecraft logo." loading="lazy" width="68" height="75">
                 </div>
-                <h5 class="courses-catalog-card__heading">Minecraft</h5>
+                <h5 class="courses-catalog-card__heading">Minecraft Java</h5>
                 <span class="courses-catalog-card__info"><?php echo $minecraft_results[0]->count; ?> Courses</span>
               </a>
             </div>
@@ -73,7 +73,7 @@ $unity_results = $wpdb->get_results( "SELECT COUNT(*) as count FROM `wp_posts` i
             </div>
           </div><div class="courses__item">
             <div class="courses-catalog-card">
-              <a class="courses-catalog-card__link" href="<?php echo get_home_url(); ?>/all-courses/?technology=Web-dev" tabindex="-1">
+              <a class="courses-catalog-card__link" href="<?php echo get_home_url(); ?>/all-courses/?technology=Web%20Dev" tabindex="-1">
                 <div class="courses-catalog-card__image">
                   <img srcset="<?php echo get_stylesheet_directory_uri(); ?>/img/icon-technologies-png/icon-web-dev.png, <?php echo get_stylesheet_directory_uri(); ?>/img/icon-technologies-png/icon-web-dev@2x.png 2x" src="<?php echo get_stylesheet_directory_uri(); ?>/img/icon-technologies-png/icon-web-dev.png" alt="Web Development logo." loading="lazy" width="119" height="71">
                 </div>
