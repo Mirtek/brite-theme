@@ -65,7 +65,7 @@ $unity_results = $wpdb->get_results( "SELECT COUNT(*) as count FROM `wp_posts` i
             <div class="courses-catalog-card">
               <a class="courses-catalog-card__link" href="<?php echo get_home_url(); ?>/all-courses/?technology=Javascript" tabindex="-1">
                 <div class="courses-catalog-card__image">
-                  <img srcset="<?php echo get_stylesheet_directory_uri(); ?>/img/icon-technologies-png/icon-javascript.png, <?php echo get_stylesheet_directory_uri(); ?>/img/icon-technologies-png/icon-javascript@2x.png 2x" src="<?php echo get_stylesheet_directory_uri(); ?>/img/icon-technologies-png/icon-javascript.png" alt="JavaScript logo." loading="lazy" width="41" height="76">
+                  <img srcset="<?php echo get_stylesheet_directory_uri(); ?>/img/icon-technologies-png/icon-javascript.png, <?php echo get_stylesheet_directory_uri(); ?>/img/icon-technologies-png/icon-javascript@2x.png 2x" src="<?php echo get_stylesheet_directory_uri(); ?>/img/icon-technologies-png/icon-javascript.png" alt="JavaScript logo." loading="lazy" width="56" height="80">
                 </div>
                 <h5 class="courses-catalog-card__heading">JavaScript</h5>
                 <span class="courses-catalog-card__info"><?php echo $java_results[0]->count; ?> Courses</span>
